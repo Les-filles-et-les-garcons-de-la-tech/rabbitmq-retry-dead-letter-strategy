@@ -26,13 +26,14 @@ class EmitLog
             var body = Encoding.UTF8.GetBytes(message);
             var message2 = "Hello World number 2!";
             var body2 = Encoding.UTF8.GetBytes(message2);
-            channel.BasicPublish(exchange: main_exchange, routingKey: routingKey, basicProperties: null, body: body);
+            IBasicProperties properties = channel.CreateBasicProperties();           
+            // Les messages sont persistents.
+            properties.DeliveryMode = 2;
+            channel.BasicPublish(exchange: main_exchange, routingKey: routingKey, basicProperties: properties, body: body);
             Console.WriteLine(" [{0}] Envoie vers '{1}' du message '{2}'", main_exchange, routingKey, message);
                         channel.BasicPublish(exchange: main_exchange, routingKey: routingKey2, basicProperties: null, body: body2);
             Console.WriteLine(" [{0}] Envoi vers '{1}' du message '{2}'", main_exchange, routingKey2, message2);
         }
-
-
         Console.WriteLine(" Press [enter] to exit.");
         Console.ReadLine();
     }

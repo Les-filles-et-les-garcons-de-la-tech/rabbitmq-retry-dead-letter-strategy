@@ -79,7 +79,7 @@ class ReceiveLogs
     private static long ExtractXDeathCount(IDictionary<string, object> headers)
     {
         long xDeathCount = 0;
-        if (headers != null ) {
+        if (headers != null && headers.ContainsKey("x-death")) {
             var xDeath = ((List<object>) headers["x-death"])[0];
             IDictionary<string, object>  xDeathDictonnary = (IDictionary<string, object>) xDeath;
             xDeathCount = (long) xDeathDictonnary["count"];
