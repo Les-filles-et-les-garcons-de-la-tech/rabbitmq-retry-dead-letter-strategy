@@ -210,7 +210,7 @@
           "vhost":"/",
           "destination":"dead-letter-queue",
           "destination_type":"queue",
-          "routing_key":"*",
+          "routing_key":"#",
           "arguments":{
              
           }
@@ -250,7 +250,7 @@
           "vhost":"/",
           "destination":"retry-queue",
           "destination_type":"queue",
-          "routing_key":"*",
+          "routing_key":"#",
           "arguments":{
              
           }
